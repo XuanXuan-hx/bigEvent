@@ -35,6 +35,7 @@ body {
     justify-content: flex-end;
 }
 
+/* 先隐藏注册的盒子 */
 .register {
     display: none;
 }

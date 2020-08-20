@@ -41,6 +41,7 @@ $('.register form').on('submit', function (e) {
         url: 'http://ajax.frontend.itheima.net/api/reguser',
         data: data,
         success: function (res) {
+            layer.msg(res.message);
             if (res.status === 0) {
                 // 注册成功,显示登录的盒子
                 $('.login').show().next().hide();
@@ -48,8 +49,37 @@ $('.register form').on('submit', function (e) {
                 $('.register form')[0].reset();
             }
         }
-
-
-
     });
+});
+
+// -------------------------------注册表单功能--------------------------------------
+// 1.用户名 密码 确认密码不能重复(layui自带表单验证,加上required(必填项) lay-verify)
+// 2.密码 重复密码长度 6~12位,且不能出现空格
+// 3.密码和重复密码必须一致
+// layui自定义验证规则使用步骤
+// 加载form模块 (var 变量 = layui.模块)
+var form = layui.form;
+// 调用form.verify()编写验证规则
+// console.log(form)
+form.verify({
+    // 键(验证规则):值 (验证的方法,可以使用数组/函数)
+
+    // 使用数组
+    // changdu: ['正则表达式','验证失败时的提示信息']
+    changdu: [/^\S{6,12}$/, '长度6-12位,不能有空格'], //{6,12}
+
+    // 使用函数
+    same: function (val) {
+        // 形参:val,表示食用验证规则的输入框的值
+        // 比如重复密码使用了这个验证规则,
+        // 形参val表示输入的重复密码
+        // 功能代码
+        // 获取密码
+        var pwd = $('.pwd').val();
+        // 比较
+        if (pwd !== val) {
+            // return 返回的值,就是错误提示信息
+            return '两次密码不一致';
+        }
+    }
 });
