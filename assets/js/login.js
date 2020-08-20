@@ -27,3 +27,29 @@ $('.login form').on('submit', function (e) {
         }
     });
 });
+
+// -------------------------------注册功能--------------------------------------
+// 表单提交,阻止默认行为,收集用户信息,密码,ajax提交给用户信息
+$('.register form').on('submit', function (e) {
+    e.preventDefault();
+    // 收集用户信息
+    var data = $(this).serialize();
+    // console.log(data);
+    // 发送ajax请求
+    $.ajax({
+        type: 'POST',
+        url: 'http://ajax.frontend.itheima.net/api/reguser',
+        data: data,
+        success: function (res) {
+            if (res.status === 0) {
+                // 注册成功,显示登录的盒子
+                $('.login').show().next().hide();
+                // 清空注册的表单
+                $('.register form')[0].reset();
+            }
+        }
+
+
+
+    });
+});
