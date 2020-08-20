@@ -1,4 +1,13 @@
-// 登录功能
+// -----------------------------切换登录和注册的盒子-----------------------------
+$('.login a').click(function () {
+    $('.register').show().prev().hide();
+});
+
+$('.register a').click(function () {
+    $('.login').show().next().hide();
+});
+
+// -------------------------------登录功能--------------------------------------
 $('.login form').on('submit', function (e) {
     e.preventDefault();
     // 收集账号,密码
@@ -16,5 +25,5 @@ $('.login form').on('submit', function (e) {
                 location.href = '/index.html';
             }
         }
-    })
-})
+    });
+});
