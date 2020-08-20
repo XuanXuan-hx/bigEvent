@@ -64,13 +64,13 @@
             </div>
             <!-- 密码 -->
             <div class="layui-form-item">
-                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                <input type="password" name="password" required lay-verify="required|changdu" placeholder="请输入密码"
                     autocomplete="off" class="layui-input pwd">
             </div>
             <!-- 重复密码 -->
             <div class="layui-form-item">
-                <input type="password" required lay-verify="required" placeholder="请再次确认密码" autocomplete="off"
-                    class="layui-input">
+                <input type="password" required lay-verify="required|changdu|same" placeholder="请再次确认密码"
+                    autocomplete="off" class="layui-input">
             </div>
             <!-- 按钮 -->
             <div class="layui-form-item">
@@ -84,8 +84,6 @@
         <!-- 登录的表单 end -->
     </div>
     <!-- 注册的盒子 end -->
-
-
 
     <script src="/assets/lib/jquery.js"></script>
     <script src="/assets/lib/layui/layui.all.js"></script>
