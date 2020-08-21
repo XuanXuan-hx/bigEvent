@@ -4,7 +4,8 @@
 function getUserInfo() {
     // 发送ajax请求,获取用户信息(必须先登录,保证存储有可用的token)
     $.ajax({
-        url: 'http://ajax.frontend.itheima.net/my/userinfo',
+        url: '/my/userinfo',
+        // ajax请求成功后触发
         success: function (res) {
             console.log(res);
             if (res.status === 0) {
@@ -24,11 +25,7 @@ function getUserInfo() {
                 }
             }
         },
-        headers: {
-            Authorization: localStorage.getItem('token')
-        }
     });
-
 }
 getUserInfo();
 

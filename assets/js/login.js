@@ -15,7 +15,7 @@ $('.login form').on('submit', function (e) {
     // ajax提交
     $.ajax({
         type: 'POST',
-        url: 'http://ajax.frontend.itheima.net/api/login',
+        url: '/api/login',
         data: data,
         success: function (res) {
             if (res.status === 0) {
@@ -38,7 +38,7 @@ $('.register form').on('submit', function (e) {
     // 发送ajax请求
     $.ajax({
         type: 'POST',
-        url: 'http://ajax.frontend.itheima.net/api/reguser',
+        url: '/api/reguser',
         data: data,
         success: function (res) {
             layer.msg(res.message);
