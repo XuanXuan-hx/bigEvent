@@ -1,0 +1,15 @@
+body {
+    background-color: #f2f3f5;
+}
+
+/* 调整卡片面板 */
+.layui-card {
+    margin: 25px;
+}
+
+/* 设置标题区 */
+.layui-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
