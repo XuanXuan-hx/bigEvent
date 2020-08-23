@@ -1,3 +1,6 @@
+// 加载form模块
+var form = layui.form;
+
 //----------------------------数据回填--------------------------
 // 定义渲染表单的函数
 function renderForm() {
@@ -7,10 +10,13 @@ function renderForm() {
         url: '/my/userinfo',
         success: function (res) {
             // 数据回填
-            $('input[name=username]').val(res.data.username);
-            $('input[name=nickname]').val(res.data.nickname);
-            $('input[name=email]').val(res.data.email);
-            $('input[name=id]').val(res.data.id);
+            // $('input[name=username]').val(res.data.username);
+            // $('input[name=nickname]').val(res.data.nickname);
+            // $('input[name=email]').val(res.data.email);
+            // $('input[name=id]').val(res.data.id);
+            // form.val('表单',{回填的数据});
+            // form.val('表单的lay-filter属性值',{回填的数据});
+            form.val('user', res.data);
         }
     });
 }
@@ -37,4 +43,14 @@ $('.layui-form').on('submit', function (e) {
             }
         }
     });
+});
+
+
+//---------------------------重置表单----------------------------------------
+// 点击重置按钮,默认会清空表单,但是我们希望恢复原来的样子
+$('button[type=reset]').click(function (e) {
+    // 阻止表单默认行为
+    e.preventDefault();
+    // 恢复表单数据,刷新页面后看到的效果一样
+    renderForm();
 });
